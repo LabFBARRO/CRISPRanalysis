@@ -10,15 +10,17 @@ In this work, we present a workflow to analyze InDels from the multicopy α-glia
 
 Bayesian optimization was implemented to optimize Usearch v9.2.64 parameters from merge to search steps for the α-gliadin amplicons on the wild type lines.
 ````
-Step1_Bayesian_usearch.py --database <str> --file_intervals <str> --trim_primers <str> --path_usearch_control <str>
+python Step1_Bayesian_usearch.py --database <str> --file_intervals <str> --trim_primers <str> --path_usearch_control <str>
 ````
 \
 *Help:*
 
---database	File fasta with database sequences. Example: /path/to/database/database.fasta.\
---file_intervals	File with intervals for parameters. Example in /Examples/Example_intervals.txt.\
---trim_primers	Trim primers in reads if you use database without primers. Optios: YES | NO.\
---path_usearch_control	Path of usearch and control raw data separated by \",\" without white spaces. Example: /paht/to/usearch,/path/to/reads_control.
+|Argument               |Help|
+|---                    |--- |
+|--database	            |File fasta with database sequences. Example:             /path/to/database/database.fasta.|
+|--file_intervals       |File with intervals for parameters. Example in /Examples/Example_intervals.txt.|
+|--trim_primers	        |Trim primers in reads if you use database without primers. Optios: YES | NO.|
+|--path_usearch_control	|Path of usearch and control raw data separated by \",\" without white spaces. Example: /paht/to/usearch,/path/to/reads_control.|
 
 \
 *Outputs:*
@@ -91,11 +93,13 @@ python Step4_usearch_to_table.py --file_otu <str> --file_group <str> --prefix_ou
 \
 *Help:*
 
---file_otu	File of TMM normalized otu_table from usearch. Remove \"#OTU\" from the first line.\
---file_group	Path to file of genotypes in wild type and CRISPR lines. Example in /Examples/Example_groups.txt.\
---prefix_output	Prefix to output name. Example: if you are working with BW208 groups: BW.\
---genotype	Genotype name. Example: if you are working with BW208 groups: BW208.\
-Default threshold 0.3 % of frequency of each unique denoised amplicon (Amp) in each line.
+|Argument               |Help|
+|---                    |--- |
+|--file_otu	|File of TMM normalized otu_table from usearch. Remove \"#OTU\" from the first line.|
+|--file_group	|Path to file of genotypes in wild type and CRISPR lines. Example in /Examples/Example_groups.txt.|
+|--prefix_output	|Prefix to output name. Example: if you are working with BW208 groups: BW.|
+|--genotype	|Genotype name. Example: if you are working with BW208 groups: BW208.|
+> Default threshold 0.3 % of frequency of each unique denoised amplicon (Amp) in each line.
 
 \
 *Outputs:*
