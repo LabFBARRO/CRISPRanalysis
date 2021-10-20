@@ -1,0 +1,5 @@
+diff	5,82
+pct	2,30
+maxee	0.25,1.5
+amp	2,30
+id	"-search_exact unoise.fa","search_global unoise.fa -id 0.99"
