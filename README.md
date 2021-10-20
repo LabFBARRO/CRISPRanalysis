@@ -7,9 +7,10 @@ In this work, we present a workflow to analyze InDels from the multicopy α-glia
 
 ## ***Step1:***
 
-Bayesian optimization was implemented to optimize Usearch v9.2.64 parameters from merge to search steps for the α-gliadin amplicons on the wild type lines.\
+Bayesian optimization was implemented to optimize Usearch v9.2.64 parameters from merge to search steps for the α-gliadin amplicons on the wild type lines.
+````
 Step1_Bayesian_usearch.py --database \<str\> --file_intervals \<str\> --trim_primers \<str\> --path_usearch_control \<str\>
-
+````
 \
 *Help:*
 
@@ -21,27 +22,28 @@ Step1_Bayesian_usearch.py --database \<str\> --file_intervals \<str\> --trim_pri
 \
 *Outputs:*
 
-* Bayesian_usearch.txt	File with optimal values, optimal function value, samples or observations, obatained values and search space.\
-* Bayesian.png	Convergence plot.\
-* Bayesian_data_res.txt	File with the minf(x) after n calls  in each iteration.\
+* Bayesian_usearch.txt	File with optimal values, optimal function value, samples or observations, obatained values and search space.
+* Bayesian.png	Convergence plot.
+* Bayesian_data_res.txt	File with the minf(x) after n calls  in each iteration.
 
 ## ***Step 2:***
 
 Usearch pipeline optimazed on wild type lines for studying results of optimization.
+````
 Step2_usearch_WT_to_DB.sh dif pct maxee amp id path_control name_dir_usearch path_database trim_primers
-
+````
 \
 *Help:*
 
-<Arguments must be disposed in the order indicated before.>\
-* dif	Optimal value for dif Usearch parameter.\
-* pct	Optimal value for pct Usearch parameter.\
-* maxee	Optimal value for maxee Usearch parameter.\
-* amp	Optimal value for amp Usearch parameter.\
-* id	Optimal value for id Usearch parameter.\
-* path_control	Path of the wild type lines fastq files.\
-* name_dir_usearch	Path of Usearch.\
-* path_database	Path of alpha-gliadin amplicon database.\
+> Arguments must be disposed in the order indicated before.
+* dif	Optimal value for dif Usearch parameter.
+* pct	Optimal value for pct Usearch parameter.
+* maxee	Optimal value for maxee Usearch parameter.
+* amp	Optimal value for amp Usearch parameter.
+* id	Optimal value for id Usearch parameter.
+* path_control	Path of the wild type lines fastq files.
+* name_dir_usearch	Path of Usearch.
+* path_database	Path of alpha-gliadin amplicon database.
 * trim_primers	Trim primers in reads if you use database without primers. Optios: YES | NO.
 
 \
@@ -52,19 +54,20 @@ Usearch merge files, filter files, unique amplicons file, unique denoised amplic
 ## ***Step 3:***
 
 Usearch pipeline optimazed on all lines (wild types and CRISPR lines) for studying denoised unique amplicon relative abundances.
+```
 Step3_usearch_ALL_LINES.sh dif pct maxee amp id path_ALL name_dir_usearch trim_primers
-
+```
 \
 *Help:*
 
-<Arguments must be disposed in the order indicated before.>\
-* dif	Optimal value for dif Usearch parameter.\
-* pct	Optimal value for pct Usearch parameter.\
-* maxee	Optimal value for maxee Usearch parameter.\
-* amp	Optimal value for amp Usearch parameter.\
-* id	Optimal value for id Usearch parameter.\
-* path_ALL	Path of all lines (wild type and CRISPR lines) fastq files.\
-* name_dir_usearch	Path of Usearch.\
+> Arguments must be disposed in the order indicated before.
+* dif	Optimal value for dif Usearch parameter.
+* pct	Optimal value for pct Usearch parameter.
+* maxee	Optimal value for maxee Usearch parameter.
+* amp	Optimal value for amp Usearch parameter.
+* id	Optimal value for id Usearch parameter.
+* path_ALL	Path of all lines (wild type and CRISPR lines) fastq files.
+* name_dir_usearch	Path of Usearch.
 * trim_primers	Trim primers in reads if you use database without primers. Optios: YES | NO.
 
 \
@@ -72,7 +75,7 @@ Step3_usearch_ALL_LINES.sh dif pct maxee amp id path_ALL name_dir_usearch trim_p
 
 Usearch merge files, filter files, unique amplicon file, unique denoised amplicon (Amp/otu) file, otu table file.
 
-Before Step 4, otu table file must be normalized by TMM normalization method (edgeR package in R).
+> Before Step 4, otu table file must be normalized by TMM normalization method (edgeR package in R).
 Results of TMM normalized unique denoised amplicons table can be represented as heatmaps.
 Unique denoised amplicons can be compared between them to detect Insertions and Deletions (InDels) in CRISPR lines.
 
@@ -80,7 +83,9 @@ Unique denoised amplicons can be compared between them to detect Insertions and 
 ## ***Step 4:***
 
 Create tables with the presence or absence of unique denoised amplicons in each CRISPR line compared to the wild type lines.
+```
 python Step4_usearch_to_table.py --file_otu \<str\> --file_group \<str\> --prefix_output \<str\> --genotype \<str\>
+```
 
 \
 *Help:*
@@ -94,7 +99,7 @@ Default threshold 0.3 % of frequency of each unique denoised amplicon (Amp) in e
 \
 *Outputs:*
 
-<Substitute "name" in output names for the prefix_output string.>\
-* Amptable_frequency.txt	Table of Amps (otus) transformed to frequencies for apply the threshold.\
-* Amptable_brutes_name.txt	Table with number of reads contained in the unique denoised amplicons (Amps) present in each line.\
+> Substitute "name" in output names for the prefix_output string.
+* Amptable_frequency.txt	Table of Amps (otus) transformed to frequencies for apply the threshold.
+* Amptable_brutes_name.txt	Table with number of reads contained in the unique denoised amplicons (Amps) present in each line.
 * Amps_name.txt	Table with number of unique denoised amplicons (Amps) in each line.
