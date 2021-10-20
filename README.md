@@ -9,7 +9,7 @@ In this work, we present a workflow to analyze InDels from the multicopy α-glia
 
 Bayesian optimization was implemented to optimize Usearch v9.2.64 parameters from merge to search steps for the α-gliadin amplicons on the wild type lines.
 ````
-Step1_Bayesian_usearch.py --database \<str\> --file_intervals \<str\> --trim_primers \<str\> --path_usearch_control \<str\>
+Step1_Bayesian_usearch.py --database <str> --file_intervals <str> --trim_primers <str> --path_usearch_control <str>
 ````
 \
 *Help:*
@@ -84,7 +84,7 @@ Unique denoised amplicons can be compared between them to detect Insertions and 
 
 Create tables with the presence or absence of unique denoised amplicons in each CRISPR line compared to the wild type lines.
 ```
-python Step4_usearch_to_table.py --file_otu \<str\> --file_group \<str\> --prefix_output \<str\> --genotype \<str\>
+python Step4_usearch_to_table.py --file_otu <str> --file_group <str> --prefix_output <str> --genotype <str>
 ```
 
 \
