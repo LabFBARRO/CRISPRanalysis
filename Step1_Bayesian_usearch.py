@@ -100,21 +100,21 @@ class Usearch:
         os.system(PATHUSEARCH + "/usearch9 -fastx_uniques filter.fa -fastaout unicos.fa -sizeout")
         #unoise command.
         os.system(PATHUSEARCH + "/usearch9 -unoise2 unicos.fa -fastaout unoise.fa -minampsize " + str(self.amp) + " -unoise_alpha 3 -log stat_log_unoise.txt")
-        #cluster command.
-        os.system(PATHUSEARCH + "/usearch9 " + str(self.id) + " -db " + self.database + " -strand both -otutabout cluster_database.txt")
+        #search command.
+        os.system(PATHUSEARCH + "/usearch9 " + str(self.id) + " -db " + self.database + " -strand both -otutabout search_database.txt")
 
-        #number of otus clustered in database.
+        #number of otus matched in database.
         try:
-            file = open("cluster_database.txt", "r")
-            file_read = file.readlines()
+            fileSearch = open("search_database.txt", "r")
+            fileSearch_read = file.readlines()
         except:
-            print("Error: The cluster database file could not be openned or read.")
+            print("Error: The search database file could not be openned or read.")
         reads = 0
-        for line in file_read[1:]:
+        for line in fileSearch_read[1:]:
             for col in range(1, len(line.split("\t"))):
                 reads = reads + int(line.split("\t")[col].strip())
 
-        #The Bayesian optimization considers the lower result as the most optimal. In our case, the best result is the highest, so we return -result.
+        #The Bayesian optimization considers the lowest result as the most optimal. In our case, the best result is the highest, so we return -result.
         print("Running time: ", time.time() - start)
         return -reads
 
