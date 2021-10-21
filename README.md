@@ -19,7 +19,7 @@ python Step1_Bayesian_usearch.py --database <str> --file_intervals <str> --trim_
 |---                    |--- |
 |--database	            |File fasta with database sequences. Example:             /path/to/database/database.fasta.|
 |--file_intervals       |File with intervals for parameters. Example in /Examples/Example_intervals.txt.|
-|--trim_primers	        |Trim primers in reads if you use database without primers. Optios: YES | NO.|
+|--trim_primers	        |Trim primers in reads if you use database without primers. Optios: YES \| NO.|
 |--path_usearch_control	|Path of usearch and control raw data separated by \",\" without white spaces. Example: /paht/to/usearch,/path/to/reads_control.|
 
 \
