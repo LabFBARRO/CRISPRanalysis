@@ -15,8 +15,6 @@ import os
 import time
 import argparse
 
-np.random.seed(123)
-noise_level = 0.1
 
 # ARGUMENTS
 
