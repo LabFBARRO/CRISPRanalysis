@@ -74,7 +74,6 @@ PATHCONTROL = args.path_usearch_control_database.split(",")[1].strip()
 class Usearch:
     def __init__(self, database):
         self.database = database
-        pass
 
     def set_params(self, **params): #**params
         self.diff = params["diff"]
@@ -123,8 +122,7 @@ class Usearch:
 def objetive(**params):
     model = Usearch(args.database)
     model.set_params(**params)
-    result = model.predict()
-    return result
+    return model.predict()
 
 #%% OPTIMIZATION
 
