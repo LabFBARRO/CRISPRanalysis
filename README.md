@@ -1,7 +1,7 @@
 # CRISPRanalysis
 InDels analysis of CRISPR lines by NGS amplicon sequencing technology for a multicopy gene family.
 
-In this work, we present a workflow to analyze InDels from the multicopy α-gliadin gene family from wheat based on NGS data without the need to pre-viously establish a reference sequence for each genetic background. The pipeline was tested it in a multiple sample set, including three generations of edited wheat lines (T0, T1, and T2), from three different backgrounds and ploidy levels (hexaploid and tetraploid). Implementation of Bayesian optimization of Usearch parameters, inhouse Python, and bash scripts are reported.
+In this work, we present a workflow to analyze InDels from the multicopy α-gliadin gene family from wheat based on NGS data without the need to previously establish a reference sequence for each genetic background. The pipeline was tested it in a multiple sample set, including three generations of edited wheat lines (T0, T1, and T2), from three different backgrounds and ploidy levels (hexaploid and tetraploid). Implementation of Bayesian optimization of Usearch parameters, inhouse Python, and bash scripts are reported.
 
 
 # **Workflow:**
